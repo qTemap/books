@@ -9,7 +9,7 @@
 
 <title>Пример API Карт Google на языке JavaScript </title>
 
-<script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=AIzaSyBmVHybOVUPKaetMKE_Evz0l6pyt27FAvA"
+<script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=AIzaSyDdOgLPCjwVvragEfq7JPt0Z6WExirLDDk"
 
 type="text/javascript"></script>
 
