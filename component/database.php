@@ -2,11 +2,11 @@
 
 /* Mysql */	
 	
-    define ('DBHOST', 'localhost'); 
-    define ('DBPORT', '3306'); 
-    define ('DBNAME', 'project'); // Имя базы
-    define ('DBUSER', 'root'); // Пользователь
-    define ('DBPASS', ''); // Пароль
+   define ('HOST', 'localhost'); 
+    define ('PORT', '3306'); 
+    define ('NAME', 'project'); // Имя базы
+    define ('USER', 'root'); // Пользователь
+    define ('PASS', ''); // Пароль
 	
 /* PHP DATA OBJECT ничего не трогай класс с документации */		
 
@@ -84,7 +84,19 @@ class DB {
     static $dbh; 
     public function __construct() { 
 		try { 
-			self :: $dbh = new PDO_('mysql:host='.DBHOST.';port='.DBPORT.';dbname='.DBNAME,DBUSER,DBPASS);
+			if ($_SERVER['SERVER_NAME'] == "https://booksinf.herokuapp.com") {
+				$url = parse_url(getenv("CLEARDB_DATABASE_URL"));
+
+				$dbas = substr( $url["path"], 1);
+			    define ('DBHOST', $url["host"]); 
+			    //define ('DBPORT', '3306'); 
+			    define ('DBNAME', $dbas); // Имя базы
+			    define ('DBUSER', $url["user"]); // Пользователь
+			    define ('DBPASS', $url["pass"]); // Пароль
+				self :: $dbh = new PDO_('mysql:host='.DBHOST.';dbname='.DBNAME,DBUSER,DBPASS);
+			} else {
+				self :: $dbh = new PDO_('mysql:host='.HOST.';dbname='.NAME,USER,PASS);
+			}
 			self :: $dbh -> exec('SET CHARACTER SET utf8'); 
 			self :: $dbh -> exec('SET NAMES utf8'); 
 		}	  
