@@ -1,58 +1,37 @@
-<!DOCTYPE html>
-<html lang="en">
+
+<!DOCTYPE html "-//W3C//DTD XHTML 1.0 Strict//EN»»http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
 <head>
-	<meta charset="UTF-8">
-	<title>Document</title>
-	<script type="text/javascript" src="/template/js/jquery-1.11.0.min.js"></script>
-	<link rel="stylesheet" href="/template/css/style_project.css">
-	<link rel="stylesheet" href="/maps/documentation/javascript/demos/demos.css">
-</head>
-<body>
-	<input type="button" value="Вход" class="entry" name="entry">
-	
-	<div class="entry_panel">
-		<input type="text">
-		<input type="text">
-	</div>
-	
-	<div class="fon"></div>
-	
-<div id="map"></div>
-    <script>
-      function initMap() {
-        var myLatLng = {lat: -25.363, lng: 131.044};
 
-        // Create a map object and specify the DOM element for display.
-        var map = new google.maps.Map(document.getElementById('map'), {
-          center: myLatLng,
-          scrollwheel: false,
-          zoom: 4
-        });
+<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
 
-        // Create a marker and set its position.
-        var marker = new google.maps.Marker({
-          map: map,
-          position: myLatLng,
-          title: 'Hello World!'
-        });
-      }
+<title>Пример API Карт Google на языке JavaScript </title>
 
-    </script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCFbEZZWcxtPyavxhJOzKEX0DVDlUHimcg&callback=initMap"
-        async defer></script>
+<script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=AIzaSyBmVHybOVUPKaetMKE_Evz0l6pyt27FAvA"
+
+type="text/javascript"></script>
+
+<script type="text/javascript">
+
+function initialize() {if (GBrowserIsCompatible()) {
+
+var map = new GMap2(document.getElementById("map_canvas"));
+
+map.setCenter(new GLatLng(56.32811,44.0), 10);map.addControl(new GLargeMapControl());
+
+map.addControl(new GMapTypeControl());
+
+}}
 
 
-    
-  </body>
+</script></head>
+
+<body onload="initialize()" onunload="GUnload()">
+
+<div id="map_canvas" style="width: 500px; height: 300px"></div>
+
 </body>
+
 </html>
-
-// <script>
-// 	$(document).ready(function() {
-
-// 		$('.entry').click(function() {
-// 			$('.entry_panel').css({'display':'block'});
-// 		});
-
-// 	});
-// </script>
