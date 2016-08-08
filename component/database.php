@@ -84,7 +84,7 @@ class DB {
     static $dbh; 
     public function __construct() { 
 		try { 
-			if ($_SERVER['SERVER_NAME'] == "https://booksinf.herokuapp.com") {
+			if ($_SERVER['SERVER_NAME'] == "booksinf.herokuapp.com") {
 				$url = parse_url(getenv("CLEARDB_DATABASE_URL"));
 
 				$dbas = substr( $url["path"], 1);
