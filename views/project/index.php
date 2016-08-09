@@ -113,22 +113,28 @@ function init() {
             height: 80%;
         }
         .header {
-            padding: 5px;
+            width: 1000px;
+            margin: auto;
+            height: 70px;
+            background-color: #444;
         }
     </style>
+
 </head>
 <body>
-<!-- <p class="header">Кликните по карте, чтобы узнать адрес</p>
-<div id="map"/> -->
-<?php 
-
+<div class="header">
+  <?php 
     if (isset($_COOKIE['name']) && isset($_COOKIE['sename'])) {
-      echo $_COOKIE['name'];
+      echo "<div class='name'>".$_COOKIE['name']."</div>";
     } else { 
-      echo("<a href='".$fb->get_link()."'>Войти</a>");
+      echo("<a href='".$fb->get_link()."'><div class='entry'>Войти</div></a>");
     }
-
 ?>
+</div>
+<div id="map"></div> 
+
+
+
 </body>
 </html>
 
