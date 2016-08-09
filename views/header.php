@@ -21,7 +21,7 @@ $fb = new FBAuth(array(
 
 	"client_id"		=> "530570083816060",
 	"client_secret"	=> "905948040ad36c7a32b121acf6627e5a",
-	"redirect_uri"	=> "https://booksinf.herokuapp.com"
+	"redirect_uri"	=> "https://booksinf.herokuapp.com/all_project"
 ));
 
 if(isset($_GET["code"])){
