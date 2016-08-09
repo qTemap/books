@@ -31,11 +31,7 @@ map.addOverlay(placemark);
 
 
 </script>
-<?php 
 
-  require_once ROOT."/views/header.php";
-
-?>
 </body>
 </html> -->
 
@@ -124,6 +120,11 @@ function init() {
 <body>
 <p class="header">Кликните по карте, чтобы узнать адрес</p>
 <div id="map"/>
+<?php 
+
+  require_once ROOT."/views/header.php";
+
+?>
 </body>
 </html>
 
