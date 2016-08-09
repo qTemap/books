@@ -22,7 +22,7 @@ if(isset($_GET["code"])){
 		$result = DB :: $dbh->query('SELECT * FROM users WHERE name = ? AND sename = ?', array($fb->user_info["first_name"], $fb->user_info["last_name"]));
 
 		if(!empty($result)) {
-			echo("Социальный ID пользователя: ".$fb->user_info["id"]);
+			header("Location: /all_project"); exit;
 		} else {
 			DB :: $dbh -> query("INSERT INTO users (name, sename, foto) 
 								 VALUES ( ?, ?, ?); 
