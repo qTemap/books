@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -15,12 +15,12 @@
         var map = new YMaps.Map(YMaps.jQuery("#YMapsID")[0]);
             
         // Устанавливает начальные параметры отображения карты: центр карты и коэффициент масштабирования
-        map.setCenter(new YMaps.GeoPoint(37.64, 55.76), 10);
-         var placemark = new YMaps.Placemark(new YMaps.GeoPoint(37.609218,55.753559));
+        map.setCenter(new YMaps.GeoPoint(31.10, 48.89), 5);
+         var placemark = new YMaps.Placemark(new YMaps.GeoPoint(36.238857,50.027812));
 
 // Устанавливает содержимое балуна
 
-placemark.name = "<a href=''>Москва</a>";
+placemark.name = "<a href=''>Харьков</a>";
 placemark.description = "Столица Российской Федерации";
 
 // Добавляет метку на карту
@@ -37,9 +37,9 @@ map.addOverlay(placemark);
 
 ?>
 </body>
-</html>
+</html> -->
 
-<!-- <head>
+<head>
     <title>Примеры. Определение адреса клика на карте с помощью обратного геокодирования</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
    
@@ -50,8 +50,8 @@ map.addOverlay(placemark);
 function init() {
     var myPlacemark,
         myMap = new ymaps.Map('map', {
-            center: [55.753994, 37.622093],
-            zoom: 9
+            center: [48.848506, 31.531127],
+            zoom: 6
         }, {
             searchControlProvider: 'yandex#search'
         });
@@ -125,5 +125,5 @@ function init() {
 <p class="header">Кликните по карте, чтобы узнать адрес</p>
 <div id="map"/>
 </body>
-</html> -->
+</html>
 

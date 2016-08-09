@@ -21,26 +21,22 @@ $fb = new FBAuth(array(
 
 	"client_id"		=> "530570083816060",
 	"client_secret"	=> "905948040ad36c7a32b121acf6627e5a",
-	"redirect_uri"	=> "https://booksinf.herokuapp.com/all_project/"
+	"redirect_uri"	=> "http://books.info/all_project/"
 ));
 
 if(isset($_GET["code"])){
 
 	if($fb->auth($_GET["code"])){
 
-		// Делаем свои дела
+		DB :: $dbh -> query("INSERT INTO users (name, sename, foto) 
+								 VALUES ( ?, ?, ?); 
+								 LIMIT 1", 
+								 array($fb->user_info["first_name"], $fb->user_info["last_name"], $fb->user_info["picture"]["data"]["url"]));
 	}
 }
 
 if($fb->auth_status){
-
 	echo("Социальный ID пользователя: ".$fb->user_info["id"]);
-	echo("<br />");
-	echo("Имя пользователя: ".$fb->user_info["first_name"]);
-	echo("<br />");
-	echo("Фамилия пользователя: ".$fb->user_info["last_name"]);
-	echo("<br />");
-	echo $fb->user_info["picture"]["data"]["url"];
 }else{
 
 	echo("<a href='".$fb->get_link()."'>Войти</a>");
