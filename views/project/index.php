@@ -122,13 +122,11 @@ function init() {
 <div id="map"/>
 <?php 
 
-  if($fb->auth_status){
-
-  
-}else{
-
-  echo("<a href='".$fb->get_link()."'>Войти</a>");
-}
+  if (isset($_COOKIE['name']) && isset($_COOKIE['sename'])) {
+    
+  } else { 
+    echo("<a href='".$fb->get_link()."'>Войти</a>");
+  }
 
 ?>
 </body>
