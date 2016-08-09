@@ -31,7 +31,11 @@ map.addOverlay(placemark);
 
 
 </script>
+<?php 
 
+  require_once ROOT."/views/header.php";
+
+?>
 </body>
 </html>
 

@@ -7,6 +7,45 @@
 <body>
 	<input type="text" value="" class="login" name="">
 	<input type="text" value="" class="password" name="">
-	<input type="button" value="" class="log" name="">
+	<form action="" method="get">
+		<input type="button" value="" class="log" name="code">
+	</form>
+
+	
+
+	<?php 
+
+	require_once("face.php");
+
+$fb = new FBAuth(array(
+
+	"client_id"		=> "ID_приложения",
+	"client_secret"	=> "защищенный_ключ",
+	"redirect_uri"	=> "адрес_сайта"
+));
+
+if(isset($_GET["code"])){
+
+	if($fb->auth($_GET["code"])){
+
+		// Делаем свои дела
+	}
+}
+
+if($fb->auth_status){
+
+	echo("Социальный ID пользователя: ".$fb->user_info["id"]);
+	echo("<br />");
+	echo("Имя пользователя: ".$fb->user_info["first_name"]);
+	echo("<br />");
+	echo("Фамилия пользователя: ".$fb->user_info["last_name"]);
+	echo("<br />");
+	echo("<img src='".$fb->user_info["picture"]["data"]["url"]."' alt='image' />");
+}else{
+
+	echo("<a href='".$fb->get_link()."'>Войти</a>");
+}
+
+	?>
 </body>
 </html>
