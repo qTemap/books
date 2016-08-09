@@ -1,34 +1,125 @@
-<html xmlns="http://www.w3.org/1999/xhtml">
-
+<!DOCTYPE html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+  <script src="https://api-maps.yandex.ru/1.1/index.xml" type="text/javascript"></script>
+  <div id="YMapsID" style="width:600px;height:400px"></div>
+  <script type="text/javascript">
 
-<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    // Создает обработчик события window.onLoad
+    YMaps.jQuery(function () {
+        // Создает экземпляр карты и привязывает его к созданному контейнеру
+        var map = new YMaps.Map(YMaps.jQuery("#YMapsID")[0]);
+            
+        // Устанавливает начальные параметры отображения карты: центр карты и коэффициент масштабирования
+        map.setCenter(new YMaps.GeoPoint(37.64, 55.76), 10);
+         var placemark = new YMaps.Placemark(new YMaps.GeoPoint(37.609218,55.753559));
 
-<title>Пример API Карт Google на языке JavaScript </title>
+// Устанавливает содержимое балуна
 
-<script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=AIzaSyDdOgLPCjwVvragEfq7JPt0Z6WExirLDDk"
+placemark.name = "<a href=''>Москва</a>";
+placemark.description = "Столица Российской Федерации";
 
-type="text/javascript"></script>
-
-<script type="text/javascript">
-
-function initialize() {if (GBrowserIsCompatible()) {
-
-var map = new GMap2(document.getElementById("map_canvas"));
-
-map.setCenter(new GLatLng(56.32811,44.0), 10);map.addControl(new GLargeMapControl());
-
-map.addControl(new GMapTypeControl());
-
-}}
+// Добавляет метку на карту
+map.addOverlay(placemark); 
+    });
+    // Создает метку в центре Москвы
 
 
-</script></head>
 
-<body onload="initialize()" onunload="GUnload()">
-
-<div id="map_canvas" style="width: 500px; height: 300px"></div>
+</script>
 
 </body>
-
 </html>
+
+<!-- <head>
+    <title>Примеры. Определение адреса клика на карте с помощью обратного геокодирования</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+   
+    <script src="//api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
+    <script>
+    ymaps.ready(init);
+
+function init() {
+    var myPlacemark,
+        myMap = new ymaps.Map('map', {
+            center: [55.753994, 37.622093],
+            zoom: 9
+        }, {
+            searchControlProvider: 'yandex#search'
+        });
+
+    // Слушаем клик на карте.
+    myMap.events.add('click', function (e) {
+        var coords = e.get('coords');
+
+        // Если метка уже создана – просто передвигаем ее.
+        if (myPlacemark) {
+          console.log(coords);
+            myPlacemark.geometry.setCoordinates(coords);
+        }
+        // Если нет – создаем.
+        else {
+          console.log(coords);
+            myPlacemark = createPlacemark(coords);
+            myMap.geoObjects.add(myPlacemark);
+            // Слушаем событие окончания перетаскивания на метке.
+            myPlacemark.events.add('dragend', function () {
+                getAddress(myPlacemark.geometry.getCoordinates());
+            });
+        }
+        getAddress(coords);
+    });
+
+    // Создание метки.
+    function createPlacemark(coords) {
+        return new ymaps.Placemark(coords, {
+            iconCaption: 'поиск...'
+        }, {
+            preset: 'islands#violetDotIconWithCaption',
+            draggable: true
+        });
+    }
+
+    // Определяем адрес по координатам (обратное геокодирование).
+    function getAddress(coords) {
+        myPlacemark.properties.set('iconCaption', 'поиск...');
+        ymaps.geocode(coords).then(function (res) {
+            var firstGeoObject = res.geoObjects.get(0);
+
+            myPlacemark.properties
+                .set({
+                    iconCaption: firstGeoObject.properties.get('name'),
+                    balloonContent: firstGeoObject.properties.get('text')
+                });
+        });
+    }
+}
+</script>
+    <style type="text/css">
+        html, body {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            font-family: Arial;
+            font-size: 14px;
+        }
+        #map {
+            width: 100%;
+            height: 80%;
+        }
+        .header {
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+<p class="header">Кликните по карте, чтобы узнать адрес</p>
+<div id="map"/>
+</body>
+</html> -->
+
