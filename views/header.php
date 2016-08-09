@@ -28,7 +28,11 @@ if(isset($_GET["code"])){
 
 	if($fb->auth($_GET["code"])){
 
-		if($fb->auth_status){
+		// Делаем свои дела
+	}
+}
+
+if($fb->auth_status){
 
 	echo("Социальный ID пользователя: ".$fb->user_info["id"]);
 	echo("<br />");
@@ -36,15 +40,11 @@ if(isset($_GET["code"])){
 	echo("<br />");
 	echo("Фамилия пользователя: ".$fb->user_info["last_name"]);
 	echo("<br />");
-	echo("<img src='".$fb->user_info["picture"]["data"]["url"]."' alt='image' />");
+	echo($fb->user_info["picture"]["data"]["url"];
 }else{
 
 	echo("<a href='".$fb->get_link()."'>Войти</a>");
 }
-	}
-}
-
-
 
 	?>
 </body>
