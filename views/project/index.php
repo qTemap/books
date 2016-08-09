@@ -122,7 +122,13 @@ function init() {
 <div id="map"/>
 <?php 
 
-  require_once ROOT."/views/header.php";
+  if($fb->auth_status){
+
+  
+}else{
+
+  echo("<a href='".$fb->get_link()."'>Войти</a>");
+}
 
 ?>
 </body>
