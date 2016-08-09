@@ -28,16 +28,22 @@ if(isset($_GET["code"])){
 
 	if($fb->auth($_GET["code"])){
 
-		DB :: $dbh -> query("INSERT INTO users (name, sename, foto) 
+		$result = DB :: $dbh->query('SELECT * FROM users');
+
+		if($result['name'] == $fb->user_info["first_name"] && $result['sename'] == $fb->user_info["last_name"]) {
+			echo("Социальный ID пользователя: ".$fb->user_info["id"]);
+		} else {
+			DB :: $dbh -> query("INSERT INTO users (name, sename, foto) 
 								 VALUES ( ?, ?, ?); 
 								 LIMIT 1", 
 								 array($fb->user_info["first_name"], $fb->user_info["last_name"], $fb->user_info["picture"]["data"]["url"]));
+		}
 	}
 }
 
 if($fb->auth_status){
 
-	echo("Социальный ID пользователя: ".$fb->user_info["id"]);
+	
 }else{
 
 	echo("<a href='".$fb->get_link()."'>Войти</a>");
