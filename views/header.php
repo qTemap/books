@@ -28,9 +28,9 @@ if(isset($_GET["code"])){
 
 	if($fb->auth($_GET["code"])){
 
-		$result = DB :: $dbh->query('SELECT * FROM users');
+		$result = DB :: $dbh->query('SELECT * FROM users WHERE name = ? AND sename = ?', array($fb->user_info["first_name"], $fb->user_info["last_name"]));
 
-		if($result['name'] == $fb->user_info["first_name"] && $result['sename'] == $fb->user_info["last_name"]) {
+		if(!empty($result)) {
 			echo("Социальный ID пользователя: ".$fb->user_info["id"]);
 		} else {
 			DB :: $dbh -> query("INSERT INTO users (name, sename, foto) 
