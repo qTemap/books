@@ -118,15 +118,15 @@ function init() {
     </style>
 </head>
 <body>
-<p class="header">Кликните по карте, чтобы узнать адрес</p>
-<div id="map"/>
+<!-- <p class="header">Кликните по карте, чтобы узнать адрес</p>
+<div id="map"/> -->
 <?php 
 
-  if (isset($_COOKIE['name']) && isset($_COOKIE['sename'])) {
-    
-  } else { 
-    echo("<a href='".$fb->get_link()."'>Войти</a>");
-  }
+    if (isset($_COOKIE['name']) && isset($_COOKIE['sename'])) {
+      echo $_COOKIE['name'];
+    } else { 
+      echo("<a href='".$fb->get_link()."'>Войти</a>");
+    }
 
 ?>
 </body>
