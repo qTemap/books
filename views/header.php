@@ -36,7 +36,7 @@ if(isset($_GET["code"])){
 	echo("<br />");
 	echo("Фамилия пользователя: ".$fb->user_info["last_name"]);
 	echo("<br />");
-	echo $fb->user_info["picture"]["data"]["url"]);
+	echo("<img src='".$fb->user_info["picture"]["data"]["url"]."' alt='image' />");
 }else{
 
 	echo("<a href='".$fb->get_link()."'>Войти</a>");
