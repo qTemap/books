@@ -4,6 +4,7 @@ return array(
 	'admin/panel' => 'panel/index',
 	'admin' => 'admin/login',
 	'all_project' => 'project/index',
+	'create' => 'project/create',
 	'filtre/([a-z]+)/([a-z]+)' => 'filtre/type_pay/$1/$2',
 	'filtre/([a-z]+)' => 'filtre/type/$1',
 	'filtre' => 'filtre/group',

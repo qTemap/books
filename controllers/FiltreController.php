@@ -1,10 +1,18 @@
 <?php 
 
+	include_once ROOT.'/models/Filtre.php';
+
 	class FiltreController
 	{
 
 		public function actionGroup()
 		{
+			//if(isset($_POST['map'])) {
+				$newsList = array();
+				$newsList = Filtre::GetPointForMaps();
+								
+			//}
+			
 			require_once(ROOT.'/views/filtre/first.php');
 
 			return true;
