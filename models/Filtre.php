@@ -13,15 +13,20 @@
 
 			$i = 0;
 			while($row = $result->fetch()) {
-				$newsList[$i]['cord1'] = $row['cord1'];
-				$i++;
+				// $newsList[$i]['cord1'] = $row['cord1'];
+				// $newsList[$i]['cord2'] = $row['cord2'];
+				// $newsList[$i]['address'] = $row['address'];
+				// $i++;
+
+				$data['point'.(++$i)] = array($row['cord1'],$row['cord2'],$row['address']);
+				
 			}
-			return $newsList;
+			//print_r($newsList);
 			// $result1 = array(
 			// 	 	'da' => $pointList
 			// 		);
-			// 	$json = json_encode($result1);
-			// 	return $json;	
+				$json = json_encode($data,JSON_UNESCAPED_UNICODE);
+				echo $json;	
 			//return $pointList;
 		}
 

@@ -9,21 +9,64 @@
     ymaps.ready(init);
 
 function init() {
-    var myPlacemark,
+      
+          var myPlacemark,
         myMap = new ymaps.Map('map', {
             center: [48.848506, 31.531127],
             zoom: 6
         }, {
             searchControlProvider: 'yandex#search'
-        });     
+        });  
+
+         $.ajax({
+            type: "POST",
+            url: "#",
+            data: {map: 'map'},
+            success: function(data) {
+                var obj = jQuery.parseJSON(data);
+                console.log(obj);
+                //alert(obj.point4[1]);
+                $.each(obj, function( index, value ) {
+                    myMap.geoObjects
+                        .add(new ymaps.Placemark([value[0], value[1]], {
+                        balloonContent: value[2]
+                    })); 
+                });
+
+             
+                // for (var i = 1; i < 3; i++) {
+                
+                    
+       
+                    
+                // }
+
+            }
+        });
         
-          
+        //    $.ajax({
+        //     type: "POST",
+        //     url: "#",
+        //     data: {map: 'map'},
+        //     success: function(data) {
+        //         var obj = jQuery.parseJSON(data);
+        //         console.log(data);
+        //         alert(obj.point4[1]);
+                
+        //         for (var i = 0; i < 4; i++) {
+                  
+
+        //             myMap.geoObjects
+        //                 .add(new ymaps.Placemark([obj.point+i[1], obj.point+i[2]], {
+        //                 balloonContent: ''
+        //             })); 
+        //         }
+
+        //     }
+        // });
          
     //вывод всех меток на карту
-    myMap.geoObjects
-        .add(new ymaps.Placemark([55.684758, 37.738521], {
-            balloonContent: ''
-        }));    
+      
 }
 </script>
     <style type="text/css">
@@ -75,7 +118,9 @@ function init() {
 	<a href="all_project"><input type="button" value="Усі проекти" name="all" class="all"></a>
 	<input type="button" class="back" value="Перейди до фільтру">
     <?php 
-       print_r($newsList);
+       // echo "<pre>";
+        //print_r($newsList);
+       // echo "</pre>";
      ?>
 
 <div id="map"></div> 

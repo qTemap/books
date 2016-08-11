@@ -7,15 +7,14 @@
 
 		public function actionGroup()
 		{
-			//if(isset($_POST['map'])) {
-				$newsList = array();
+			if(isset($_POST['map'])) {
+				//$newsList = array();
 				$newsList = Filtre::GetPointForMaps();
-								
-			//}
+					return $newsList;			
+			}
 			
 			require_once(ROOT.'/views/filtre/first.php');
 
-			return true;
 		}
 
 		public function actionType($local)
