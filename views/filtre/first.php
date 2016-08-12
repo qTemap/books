@@ -29,7 +29,7 @@ function init() {
                 $.each(obj, function( index, value ) {
                     myMap.geoObjects
                         .add(new ymaps.Placemark([value[0], value[1]], {
-                        balloonContent: value[2]
+                        balloonContent: '<a href=project/'+value[3]+'>'+value[2]+'</a>'
                     })); 
                 });
 
