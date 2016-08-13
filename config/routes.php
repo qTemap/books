@@ -8,6 +8,7 @@ return array(
 	'filtre/([a-z]+)/([a-z]+)' => 'filtre/type_pay/$1/$2',
 	'filtre/([a-z]+)' => 'filtre/type/$1',
 	'filtre' => 'filtre/group',
+	'profile' => 'profile/index',
 	'project/([a-z]+)/([a-z]+)/([a-z]+)' => 'project/view_groupe/$1/$2/$3',
 	'project/([1-9]+)' => 'project/view/$1',
 

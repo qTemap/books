@@ -9,17 +9,7 @@
 			$name = DB :: $dbh -> queryFetch("SELECT * FROM project  ORDER BY id DESC LIMIT 1");
 
 			if($name_project != $name['name_project']) {
-				// $uploaddir=ROOT.'/template/img/';
 			
-			 //        $tmp_name = $_FILES["pictures"]["tmp_name"];
-			 //        $name = $uploaddir.basename($_FILES["pictures"]["name"]);
-			 //        $file = '/template/img/'.$_FILES['pictures']['name'];
-			 //        if(isset($tmp_name)) {			        	
-				//         move_uploaded_file($tmp_name, $name);			     
-			 //        }
-			    
-			
-
 				DB :: $dbh -> query("INSERT INTO project (name_project, price, days, discription, global, type, type_pay) 
 									 VALUES ( ?, ?, ?, ?, ?, ?, ?); 
 									 LIMIT 1", 
@@ -70,6 +60,15 @@
 				$i++;
 			}
 			return $projectList;
+		}
+
+		static public function GetInfoForUser($name, $sename)
+		{
+			$result = DB :: $dbh->query('SELECT * FROM users WHERE name = ? AND sename = ? ', array($name,$sename));
+
+			$uesr = $result->fetch();
+
+			return $uesr;
 		}
 
 	}

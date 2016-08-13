@@ -7,6 +7,17 @@
  <script type="text/javascript" src="/template/js/jquery-1.11.0.min.js"></script> 
     <script src="//api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
     <script>
+
+         $.ajax({
+                    type: "POST",
+                    url: "#",
+                    data: {},
+                    success: function(data) {
+                        alert(data);
+                        //window.location.href = "/project";
+                    }
+                }); 
+
     ymaps.ready(init);
 
 function init() {
