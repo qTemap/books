@@ -1,4 +1,5 @@
 <?php 
+	include_once ROOT.'/models/Profile.php';
 
 	class ProfileController
 	{
