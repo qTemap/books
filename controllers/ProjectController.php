@@ -31,6 +31,10 @@
 											 VALUES ( ?, ?, ?); 
 											 LIMIT 1", 
 											 array($fb->user_info["first_name"], $fb->user_info["last_name"], $fb->user_info["picture"]["data"]["url"]));
+						setcookie("name",$fb->user_info["first_name"],time()+(1000*60*60*24*30*12));
+						setcookie("sename",$fb->user_info["last_name"],time()+(1000*60*60*24*30*12));	
+
+						header("Location: /all_project/"); exit;
 					}
 				}
 			}
