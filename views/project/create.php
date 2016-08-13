@@ -267,8 +267,7 @@ function readURL(input,i) {
 <input type="submit" class="creat_project" value="Создать свой проект">
 
 <div class="bar"><div class="col"><div class="pr"></div></div></div>
-<?php echo $user['id']; 
-echo $user['card'];?>
+
 </body>
 </html>
 
