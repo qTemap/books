@@ -4,16 +4,20 @@
 	{
 
 
-		static public function CreateNewProject($coord_1, $coord_2, $place, $type, $type_pay, $global, $name_project, $discription, $price, $days)
+		static public function CreateNewProject($coord_1, $coord_2, $place, $type, $type_pay, $global, $name_project, $discription, $price, $days, $cookie_user_name,$cookie_user_sename)
 		{
+			$id = DB :: $dbh->query('SELECT * FROM users WHERE name = ? AND sename = ? ', array($cookie_user_name,$cookie_user_sename));
+
+			$id_user = $id->fetch();
+
 			$name = DB :: $dbh -> queryFetch("SELECT * FROM project  ORDER BY id DESC LIMIT 1");
 
 			if($name_project != $name['name_project']) {
 			
-				DB :: $dbh -> query("INSERT INTO project (name_project, price, days, discription, global, type, type_pay) 
-									 VALUES ( ?, ?, ?, ?, ?, ?, ?); 
+				DB :: $dbh -> query("INSERT INTO project (name_project, user, price, days, discription, global, type, type_pay) 
+									 VALUES ( ?, ?, ?, ?, ?, ?, ?, ?); 
 									 LIMIT 1", 
-									 array($name_project, $price, $days, $discription, $global, $type, $type_pay)); 
+									 array($name_project, $id_user['id'], $price, $days, $discription, $global, $type, $type_pay)); 
 
 				$result = DB :: $dbh -> queryFetch("SELECT * FROM project 
 									 ORDER BY id DESC LIMIT 1"); 
