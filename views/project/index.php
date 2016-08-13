@@ -71,7 +71,7 @@ map.addOverlay(placemark);
           text-decoration: none;
           color: black;
         }
-        
+
     </style>
 
 </head>
@@ -88,7 +88,7 @@ map.addOverlay(placemark);
 
 
   <div class="content">
-    <a href="create"> <div class="create_project">Создать</div></a>
+    <a href="../create"> <div class="create_project">Создать</div></a>
   </div>
 
 
