@@ -82,6 +82,15 @@
 			return true;
 		}
 
+		public function actionUser_project()
+		{
+			$projectList = Project::GetProjectByUserId($_COOKIE['name'], $_COOKIE['sename']);
+
+			require_once(ROOT.'/views/project/user_project.php');
+
+			return true;
+		}
+
 
 
 	}
