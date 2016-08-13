@@ -1,40 +1,5 @@
-<!-- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Document</title>
-</head>
-<body>
-  <script src="https://api-maps.yandex.ru/1.1/index.xml" type="text/javascript"></script>
-  <div id="YMapsID" style="width:600px;height:400px"></div>
-  <script type="text/javascript">
-
-    // Создает обработчик события window.onLoad
-    YMaps.jQuery(function () {
-        // Создает экземпляр карты и привязывает его к созданному контейнеру
-        var map = new YMaps.Map(YMaps.jQuery("#YMapsID")[0]);
-            
-        // Устанавливает начальные параметры отображения карты: центр карты и коэффициент масштабирования
-        map.setCenter(new YMaps.GeoPoint(31.10, 48.89), 5);
-         var placemark = new YMaps.Placemark(new YMaps.GeoPoint(36.238857,50.027812));
-
-// Устанавливает содержимое балуна
-
-placemark.name = "<a href=''>Харьков</a>";
-placemark.description = "Столица Российской Федерации";
-
-// Добавляет метку на карту
-map.addOverlay(placemark); 
-    });
-    // Создает метку в центре Москвы
-
-
-
-</script>
-
-</body>
-</html> -->
-
 <head>
     <title>Проекти</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />

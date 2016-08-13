@@ -264,7 +264,7 @@ function readURL(input,i) {
 <div class="local_global">Проект общегосударственный: <input type="checkbox"></div>
 <div class="view_map">Укажите на карте место реализации проекта или примерное его место нахождение: <input type="button" value="Показать карту"></div>
 <div id="map"></div> 
-<input type="submit" class="creat_project" value="Создать свой проект">
+<input type="button" class="creat_project" value="Создать свой проект">
 
 <div class="bar"><div class="col"><div class="pr"></div></div></div>
 

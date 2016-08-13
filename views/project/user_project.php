@@ -6,11 +6,12 @@
 </head>
 <body>
 	<?php if (isset($projectList['name_project'])):?>
-	qwert
-
-<?php else: ?>
-1234
-
-<?php endif; ?>
+		
+	<?php else: ?>
+		<div class="error">У вас нет своего проекта!</div>
+		<a href="create">
+			<div class="back"><input type="button" value="Создать проект"></div>
+		</a>
+	<?php endif; ?>
 </body>
 </html>
