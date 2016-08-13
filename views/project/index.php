@@ -91,8 +91,7 @@ map.addOverlay(placemark);
     <a href="../create"> <div class="create_project">Создать</div></a>
   </div>
 
-
-
+<?php echo $_COOKIE['name']; ?>
 </body>
 </html>
 
