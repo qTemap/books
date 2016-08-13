@@ -80,6 +80,8 @@ map.addOverlay(placemark);
   <?php 
     if (isset($_COOKIE['name']) && isset($_COOKIE['sename'])) {
       echo "<div class='name'>".$_COOKIE['name']."</div>";
+      setcookie("name",$_COOKIE['name'],time()+(1000*60*60*24*30*12));
+            setcookie("sename",$_COOKIE['sename'],time()+(1000*60*60*24*30*12));
     } else { 
       echo("<a class='entry' href='".$fb->get_link()."'>Войти</a>");
     }
