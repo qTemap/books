@@ -5,10 +5,10 @@
 	<title>Document</title>
 </head>
 <body>
-	<?php if (isset($projectList['name_project']));?>
+	<?php if (isset($projectList['name_project'])):?>
 	qwert
 
-<?php else; ?>
+<?php else: ?>
 1234
 
 <?php endif; ?>
