@@ -8,15 +8,15 @@
     <script src="//api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
     <script>
 
-         $.ajax({
-                    type: "POST",
-                    url: "#",
-                    data: {},
-                    success: function(data) {
-                        alert(data);
-                        //window.location.href = "/project";
-                    }
-                }); 
+         // $.ajax({
+         //            type: "POST",
+         //            url: "#",
+         //            data: {},
+         //            success: function(data) {
+         //                alert(data);
+         //                //window.location.href = "/project";
+         //            }
+         //        }); 
 
     ymaps.ready(init);
 
