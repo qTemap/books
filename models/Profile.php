@@ -9,7 +9,7 @@
 		{
 			$result = DB :: $dbh->query('SELECT * FROM users WHERE name = ? AND sename = ? ', array($name,$sename));
 
-			$uesr = $result->fetch();
+			$user = $result->fetch();
 
 			return $user;
 		}
