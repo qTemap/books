@@ -73,7 +73,7 @@
 
 		static public function GetProjectByUserId($cookie_user_name,$cookie_user_sename)
 		{
-			$id = DB :: $dbh->query('SELECT * FROM users WHERE name = ? AND sename = ? ', array($name,$sename));
+			$id = DB :: $dbh->query('SELECT * FROM users WHERE name = ? AND sename = ? ', array($cookie_user_name,$cookie_user_sename));
 
 			$id_user = $id->fetch();
 
