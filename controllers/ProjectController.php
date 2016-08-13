@@ -56,7 +56,7 @@
 				}
 
 				require_once(ROOT.'/views/project/create.php');
-			} else {
+			} else { 
 				header("Location: profile"); exit;
 			}
 
