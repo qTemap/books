@@ -60,7 +60,11 @@
 			return true;
 		}
 
-		public function actionView_groupe($local, $type, $type_pay) {
+		public function actionView_groupe($local, $type, $type_pay) 
+		{
+			$projectList = array();
+			$projectList = Project::ViewProjectGroupe($type, $type_pay);
+
 			require_once(ROOT.'/views/project/project_groupe.php');
 
 			return true;

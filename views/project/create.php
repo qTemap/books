@@ -27,13 +27,14 @@ function init() {
     	$('.view_map').remove(); 
     	$('#map').remove();
     		$('.creat_project').click(function() {
-				var h = '1'; 
+				var h = '1';
 				var name_project = $('.name_project input').val();
 				var discription = $('.discription input').val();
 				var price = $('.price input').val();
 				var days = $('.days input').val();
 				var type = $('.type select').val();
 				var type_pay = $('.type_pay select').val();
+
                 $.ajax({
 					type: "POST",
 					url: "#",
@@ -139,22 +140,22 @@ $('.pr').html(f+'грн');
 $('.pr').css({'width':r+'%'});
 
 function readURL(input,i) {
-    		if (input.files && input.files[0]) {
+            if (input.files && input.files[0]) {
 
-        		var reader = new FileReader();
+                var reader = new FileReader();
 
-		        reader.onload = function (e) {
-		            $('#'+i).attr('src', e.target.result);
-		        };
+                reader.onload = function (e) {
+                    $('#'+i).attr('src', e.target.result);
+                };
 
-        		reader.readAsDataURL(input.files[0]);
-		    }
-		}
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
 
-		$(".Img").change(function(){
-			var с = $(this).attr("id");
-		    readURL(this,с);
-		});
+        $(".Img").change(function(){
+            var i = $(this).attr("id");
+            readURL(this,i);
+        });
 });
 
 
@@ -221,6 +222,10 @@ function readURL(input,i) {
         	padding: 8px;
         }
 
+        .img_1 img {
+            width: 150px;
+        }
+
 		       
 
 
@@ -228,7 +233,10 @@ function readURL(input,i) {
 </head>
 <body>
 <div class="name_project">Название проекта:      <input type="text"></div>
-<div class="image_project">Изображение проекта:     <input type="file" id="1" class="Img" /><div class="img_1"><img id="1" src='' alt=""></div></div>
+<form action="#" method="post">
+<div class="image_project">Изображение проекта:     <div class="img_1"><img id="1" src='' alt=""></div> 
+<input type="file" name="picture" id="1" class="Img" /></div>
+</form>
 <div class="discription">Описание к проекту:      <input type="text"></div>
 <div class="price">Цена, нужная на реализацию идеи:      <input type="text"></div>
 <div class="days">Количество дней, на сбор средств:      <input type="text"></div>
@@ -245,10 +253,13 @@ function readURL(input,i) {
 <div class="local_global">Проект общегосударственный: <input type="checkbox"></div>
 <div class="view_map">Укажите на карте место реализации проекта или примерное его место нахождение: <input type="button" value="Показать карту"></div>
 <div id="map"></div> 
-<input type="button" class="creat_project" value="Создать свой проект">
+<input type="submit" class="creat_project" value="Создать свой проект">
 
 <div class="bar"><div class="col"><div class="pr"></div></div></div>
 
-
 </body>
 </html>
+
+<script>
+
+</script>
