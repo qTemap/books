@@ -5,6 +5,12 @@
 	<title>Document</title>
 </head>
 <body>
-	пользователь
+	<?php if (isset($projectList['name_project']));?>
+	qwert
+
+<?php else; ?>
+1234
+
+<?php endif; ?>
 </body>
 </html>
