@@ -49,17 +49,17 @@
 		{
 			$user = Project::GetInfoForUser($_COOKIE['name'], $_COOKIE['sename']);
 
-			if($user != '') {
+			//if($user != '') {
 				if(isset($_POST['name_project'])) {
 					Project::CreateNewProject($_POST['coord_1'], $_POST['coord_2'], $_POST['place'], $_POST['type'], $_POST['type_pay'], $_POST['global'], $_POST['name_project'], $_POST['discription'], $_POST['price'], $_POST['days']);
 					header("Location: /all_project"); exit;
 				}
 
 				require_once(ROOT.'/views/project/create.php');
-			} else { 
-				header("Location: profile"); exit;
-			}
-
+			// } else { 
+			// 	header("Location: profile"); exit;
+			// }
+				return $user;
 			return true;
 		}
 
