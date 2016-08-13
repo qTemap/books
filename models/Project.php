@@ -72,7 +72,7 @@
 
 			$user = $result->fetch();
 
-			return $user;
+			return $user['card'];
 		}
 
 		static public function GetProjectByUserId($cookie_user_name,$cookie_user_sename)
