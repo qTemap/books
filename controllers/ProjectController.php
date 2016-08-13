@@ -47,8 +47,8 @@
 
 		public function actionCreate()
 		{
-			echo $_COOKIE['name'];
-			$user = Project::GetInfoForUser($_COOKIE['name'], $_COOKIE['sename']);
+			//echo $_COOKIE['name'];
+			//$user = Project::GetInfoForUser($_COOKIE['name'], $_COOKIE['sename']);
 
 			//if(!empty($user['card'])) {
 				if(isset($_POST['name_project'])) {
