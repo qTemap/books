@@ -8,13 +8,16 @@
 	<?php echo $project['name_project'];
 	echo $project['user'];
 echo $project['price'];
-echo $project['days'];
+echo $days;
 echo $project['discription'];
-echo $project['global'];
-echo $project['type'];
-echo $project['type_pay'];
+echo $project['type'] == 'online' ? 'Интернет проект' : 'Реальный проект';
 
-	echo  $project['address']; ?>
+echo $project['type_pay'] == 'part' ? 'Долевое участие в проекте' : 'Благотворительные взносы';
+
+	 echo  $address;
+
+
+	 ?>
 
 </body>
 </html>

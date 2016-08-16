@@ -37,7 +37,9 @@
 
 			if ($id) {
 
-				$result = DB :: $dbh->query('SELECT * FROM project, maps WHERE maps.id_project = project.id AND project.id='. $id);
+				//$result = DB :: $dbh->query('SELECT * FROM project, maps WHERE maps.id_project = project.id AND project.id='. $id);
+
+				$result = DB :: $dbh->query('SELECT * FROM project WHERE id='. $id);
 
 				$project = $result->fetch();
 
@@ -45,9 +47,45 @@
 			}
 		}
 
+		static public function GetAddress($id)
+		{
+			$counrty = "Украина";
+
+			$result = DB :: $dbh->query('SELECT * FROM maps WHERE id_project='. $id);
+
+			$address = $result->fetch();
+			if(empty($address)) {
+				return $counrty;
+			} else {
+				return $address['address'];
+			}
+
+		}
+
 		static public function ViewProjectGroupe($type, $type_pay)
 		{
 			$result = DB :: $dbh->query('SELECT * FROM project WHERE type = ? AND type_pay = ? AND global = 1', array($type, $type_pay));
+		
+			$i = 0;
+			while($row = $result->fetch()) {
+				$projectList[$i]['id'] = $row['id'];
+				$projectList[$i]['name_project'] = $row['name_project'];
+				$projectList[$i]['user'] = $row['user'];
+				$projectList[$i]['price'] = $row['price'];
+				$projectList[$i]['collected'] = $row['collected'];
+				$projectList[$i]['days'] = $row['days'];
+				$projectList[$i]['img'] = $row['img'];
+				$projectList[$i]['discription'] = $row['discription'];
+				$projectList[$i]['type'] = $row['type'];
+				$projectList[$i]['type_pay'] = $row['type_pay'];
+				$i++;
+			}
+			return $projectList;
+		}
+
+		static public function GetListProject()
+		{			
+			$result = DB :: $dbh->query('SELECT * FROM project');
 		
 			$i = 0;
 			while($row = $result->fetch()) {
@@ -87,6 +125,18 @@
 
 			return $projectList;
 		}
+
+		static public function get_duration ($date_from, $date_till) {
+	        $date_from = explode('-', $date_from);
+	        $date_till = explode('-', $date_till);
+	 
+	        $time_from = mktime(0, 0, 0, $date_from[1], $date_from[2], $date_from[0]);
+	        $time_till = mktime(0, 0, 0, $date_till[1], $date_till[2], $date_till[0]);
+	        
+	        $diff = ($time_till - $time_from)/60/60/24;
+	 
+	        return $diff;
+	    }
 
 	}
 

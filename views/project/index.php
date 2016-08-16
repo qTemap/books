@@ -37,6 +37,27 @@
           color: black;
         }
 
+        .content {
+            width: 1000px;
+            height: 1500px;
+            margin: auto;
+        }
+
+        #project {
+            width: 405px;
+            height: 280px;
+            margin-top: 60px;
+            margin-left: 50px;
+            background-color: #999;
+            display: inline-block;
+            padding: 10px;
+        }
+
+        .img_project img {
+          width: 405px;
+          height: 150px;
+        }
+
     </style>
 
 </head>
@@ -56,6 +77,25 @@
 
   <div class="content">
     <a href="../create"> <div class="create_project">Создать</div></a>
+    <?php foreach ($projectList as $projectItem): ?>
+      <div id="project">
+          <a href="project/<?php echo $projectItem['id']; ?>">
+                <div class="name_project"><?php echo $projectItem['name_project']; ?></div>
+          </a>
+          <div class="img_project"><img src="<?php echo $projectItem['img']; ?>" alt=""></div>
+          <div class="price"></div>
+          <div class="collected"></div>
+          <?php echo $projectItem['user']."<br>";
+          echo $projectItem['price']."<br>";
+          echo $projectItem['collected']."<br>";
+          echo $projectItem['days']."<br>";
+          echo $projectItem['discription']."<br>";
+          echo $projectItem['type']."<br>";
+          echo $projectItem['type_pay']."<br>";
+          echo $projectItem['collected']."<br>"; 
+        ?>
+      </div>
+    <?php endforeach; ?>
   </div>
 
 

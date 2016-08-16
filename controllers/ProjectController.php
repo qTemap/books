@@ -39,6 +39,9 @@
 				}
 			}
 
+			$projectList = array();
+			$projectList = Project::GetListProject();
+
 			require_once(ROOT.'/views/project/index.php');
 
 			return true;
@@ -65,6 +68,10 @@
 		public function actionView($id) 
 		{
 			$project = Project::ProjectById($id);
+
+			$address = Project::GetAddress($id);
+
+			$days = Project::get_duration(date('Y-m-d'),$project['days']);
 
 			require_once(ROOT.'/views/project/project_for_filtre.php');
 

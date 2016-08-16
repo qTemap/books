@@ -250,7 +250,7 @@ function readURL(input,i) {
 </form>
 <div class="discription">Описание к проекту:      <input type="text"></div>
 <div class="price">Цена, нужная на реализацию идеи:      <input type="text"></div>
-<div class="days">Количество дней, на сбор средств:      <input type="text"></div>
+<div class="days">Количество дней, на сбор средств:      <input type="date"></div>
 <div class="type">Выберите тип проекта: интернет проект или проект в реальной жизне: <select>
 	<option value="online">Интернет проект</option>
 	<option value="offline">Реальный проект</option>
