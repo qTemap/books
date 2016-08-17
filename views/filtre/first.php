@@ -28,7 +28,7 @@
                     $.each(obj, function( index, value ) {
                         myMap.geoObjects
                             .add(new ymaps.Placemark([value[0], value[1]], {
-                            balloonContent: '<a href=project/'+value[3]+'>'+value[2]+'</a>'
+                            balloonContent: '<a href=project/'+value[3]+'>'+value[2]+'</a><br>'+value[4]
                         })); 
                     });
                 }
@@ -45,7 +45,7 @@
         }
 
         #map {
-            width: 1000px;
+            width: 998px;
             height: 600px;
             margin: auto;
             border: 1px solid;
@@ -114,11 +114,12 @@
 
     <div class="content">
     	<a href="filtre/global"><input type="button" value="Загальнодержавні проекти" name="global" class="global"></a>
-    	<input type="button" value="Рiдне місце" name="city" class="city">
+    	<input type="button" value="Рiдне місце" name="city" class="city">        
     	<a href="all_project"><input type="button" value="Усі проекти" name="all" class="all"></a>
     	<input type="button" class="back" value="Перейди до фільтру">
+        <div id="map"></div> 
     </div>
-<div id="map"></div> 
+
 </body>
 </html>
 <script>
@@ -128,7 +129,8 @@
 			$('#map').css({'display':'block'});
 			$('.global').css({'display':'none'});
 			$('.city').css({'display':'none'});
-			$('.back').css({'display':'block'});
+			$('.back').css({'display':'inline-block','width':'480px','margin-left':'0px','margin-top':'0px'});
+            $('.all').css({'display':'inline-block','width':'500px','margin-left':'0px','margin-top':'0px'});
 		});
 
 		$('.back').click(function() {

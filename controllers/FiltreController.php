@@ -18,7 +18,6 @@
 
 		public function actionType($local)
 		{
-
 			require_once(ROOT.'/views/filtre/second.php');
 
 			return $local;

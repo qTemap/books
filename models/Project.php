@@ -67,7 +67,7 @@
 			$result = DB :: $dbh->query('SELECT * FROM project WHERE type = ? AND type_pay = ? AND global = 1', array($type, $type_pay));
 		
 			$i = 0;
-			while($row = $result->fetch()) {
+			while ($row = $result->fetch()) {
 				$projectList[$i]['id'] = $row['id'];
 				$projectList[$i]['name_project'] = $row['name_project'];
 				$projectList[$i]['user'] = $row['user'];
@@ -80,7 +80,9 @@
 				$projectList[$i]['type_pay'] = $row['type_pay'];
 				$i++;
 			}
-			return $projectList;
+			if (!empty($projectList)) {
+				return $projectList;
+			}
 		}
 
 		static public function GetListProject()

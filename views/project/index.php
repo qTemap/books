@@ -3,7 +3,7 @@
 <head>
     <title>Проекти</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  
+    <script type="text/javascript" src="/template/js/jquery-1.11.0.min.js"></script> 
     <style type="text/css">
         
         body {
@@ -58,6 +58,24 @@
           height: 150px;
         }
 
+         .bar {
+          width: 200px;
+          height: 30px;
+          border: 1px solid;
+          position: absolute;
+        }
+
+        .col {
+          height: 30px;
+          background-color: #444;
+          position: relative;
+        }
+
+        .pr {
+          height: 10px;
+          padding: 8px;
+        }
+
     </style>
 
 </head>
@@ -83,17 +101,30 @@
                 <div class="name_project"><?php echo $projectItem['name_project']; ?></div>
           </a>
           <div class="img_project"><img src="<?php echo $projectItem['img']; ?>" alt=""></div>
-          <div class="price"></div>
-          <div class="collected"></div>
-          <?php echo $projectItem['user']."<br>";
-          echo $projectItem['price']."<br>";
-          echo $projectItem['collected']."<br>";
-          echo $projectItem['days']."<br>";
-          echo $projectItem['discription']."<br>";
-          echo $projectItem['type']."<br>";
-          echo $projectItem['type_pay']."<br>";
-          echo $projectItem['collected']."<br>"; 
-        ?>
+          
+
+
+          <div class="bar" id="<?php echo $projectItem['id']; ?>">
+              <div id="<?php echo $projectItem['id']; ?>" class="col">
+                  <div id="<?php echo $projectItem['id']; ?>" class="pr">
+                  </div>
+              </div>
+          </div>
+          
+          <div class="days"><br><br>Осталось дней: <?php echo $days = Project::get_duration(date('Y-m-d'),$projectItem['days'])."<br>";?></div>
+         
+          <div class="type"><?php echo $projectItem['type'] == 'online' ? 'Интернет проект' : 'Реальный проект';?></div>
+          <div class="type_pay"><?php echo $projectItem['type_pay'] == 'part' ? 'Долевое участие в проекте' : 'Благотворительные взносы'; ?></div>
+
+          <script type="text/javascript">
+              var id = "<?php echo $projectItem['id']; ?>";
+              var i = "<?php echo $projectItem['price']; ?>";
+              var f = "<?php echo $projectItem['collected']; ?>";
+              var r = (f*100)/i;
+              $('div#'+id+'.col').css({'width':r+'%'});
+              $('div#'+id+'.pr').css({'width':r+'%'});
+              $('div#'+id+'.pr').html(f+'грн');
+          </script>
       </div>
     <?php endforeach; ?>
   </div>
@@ -101,4 +132,5 @@
 
 </body>
 </html>
+
 

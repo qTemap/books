@@ -2,37 +2,19 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<script type="text/javascript" src="/template/js/jquery-1.11.0.min.js"></script>
 	<title>Document</title>
-	  <style type="text/css">
-        html, body {
-            margin: 0;
-            padding: 0;
-            font-family: Arial;
-            font-size: 14px;
+	<script type="text/javascript" src="/template/js/jquery-1.11.0.min.js"></script> 
+    <style type="text/css">
+        
+        body {
+          margin: 0 auto;
         }
 
         .header {
             width: 1000px;
             margin: auto;
             height: 70px;
-            background-color: #aaa;
-        }
-
-        .content {
-            width: 1000px;
-            margin: auto;
-            height: 2000px;
             background-color: #444;
-        }
-
-        #project {
-        	width: 425px;
-        	height: 300px;
-        	margin-top: 60px;
-        	margin-left: 50px;
-        	background-color: #999;
-        	display: inline-block;
         }
 
         .name {
@@ -50,63 +32,88 @@
           background-color: #999;
         }
 
-        .back {
-        	display: none;
+        a {
+          text-decoration: none;
+          color: black;
         }
 
-        .bar {
-        	width: 200px;
-        	height: 30px;
-        	border: 1px solid;
-        	position: absolute;
+        .content {
+            width: 1000px;
+            height: 1500px;
+            margin: auto;
+        }
+
+        #project {
+            width: 405px;
+            height: 280px;
+            margin-top: 60px;
+            margin-left: 50px;
+            background-color: #999;
+            display: inline-block;
+            padding: 10px;
+        }
+
+        .img_project img {
+          width: 405px;
+          height: 150px;
+        }
+
+         .bar {
+          width: 200px;
+          height: 30px;
+          border: 1px solid;
+          position: absolute;
         }
 
         .col {
-			height: 30px;
-			background-color: #444;
-			position: relative;
+          height: 30px;
+          background-color: #444;
+          position: relative;
         }
 
         .pr {
-        	margin: auto;
-        	height: 10px;
-        	padding: 8px;
+          height: 10px;
+          padding: 8px;
         }
 
-		       
-
-
     </style>
+
 </head>
 <body>
 	<div class="header">
 		
 	</div>
-	<div class="content">
-		<?php foreach ($projectList as $projectItem): ?>
-			<div id="project">
-				
-					<img src="<?php echo $projectItem['img']; ?>" alt="">
-					<?php
-					echo $projectItem['name_project']."<br>";
-					echo $projectItem['user']."<br>";
-					echo $projectItem['price']."<br>";
-					echo $projectItem['collected']."<br>";
-					echo $projectItem['days']."<br>";
-					echo $projectItem['discription']."<br>";
-					echo $projectItem['type']."<br>";
-					echo $projectItem['type_pay']."<br>"; 
-				?>
-			</div>
-		<?php endforeach; ?>
+	<div class="content">		 
+		<?php if(!empty($projectList)):
+			foreach ($projectList as $projectItem): ?>
+				<div id="project">
+					<a href="../../../project/<?php echo $projectItem['id']; ?>">
+						<div class="name_project"><?php echo $projectItem['name_project']; ?></div>
+					</a>
+					<div class="img_project"><img src="<?php echo $projectItem['img']; ?>" alt=""></div>
+					<div class="bar" id="<?php echo $projectItem['id']; ?>">
+						<div id="<?php echo $projectItem['id']; ?>" class="col">
+							<div id="<?php echo $projectItem['id']; ?>" class="pr">
+							</div>
+						</div>
+					</div>
+					<div class="days"><br><br>Осталось дней: <?php echo $days = Project::get_duration(date('Y-m-d'),$projectItem['days'])."<br>";?></div>
+					<div class="type"><?php echo $projectItem['type'] == 'online' ? 'Интернет проект' : 'Реальный проект';?></div>
+					<div class="type_pay"><?php echo $projectItem['type_pay'] == 'part' ? 'Долевое участие в проекте' : 'Благотворительные взносы'; ?></div>
+					<script type="text/javascript">
+						var id = "<?php echo $projectItem['id']; ?>";
+						var i = "<?php echo $projectItem['price']; ?>";
+						var f = "<?php echo $projectItem['collected']; ?>";
+						var r = (f*100)/i;
+						$('div#'+id+'.col').css({'width':r+'%'});
+						$('div#'+id+'.pr').css({'width':r+'%'});
+						$('div#'+id+'.pr').html(f+'грн');
+					</script>
+				</div>
+			<?php endforeach; ?>
+		<?php else: ?>
+			<div class="error_filtre">No</div> 
+		<?php endif; ?>
 	</div>
 </body>
 </html>
-
-<script>	
-	var height = $('#project').outerHeight(true);
-	var count_news = $('div#project').length;
-	count_news = Math.ceil(count_news/2);	
-	var height_content = count_news*height+60;
-	$('.content').height(height_content);
-</script>
