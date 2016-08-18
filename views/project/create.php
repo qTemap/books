@@ -134,42 +134,10 @@ function init() {
 						}
 					});
 
-				 });
+				});
         });
     }
 }
-$(document).ready(function() {
- // $('#map').click(function() {
- //    	alert("sdgfds");
- //    });
-
-var i = 1400; //1400 грн нужно собрать
-var f = 700; //собрано 1000 грн
-var r = (f*100)/1400;
-$('.col').css({'width':r+'%'});
-$('.pr').html(f+'грн');
-$('.pr').css({'width':r+'%'});
-
-function readURL(input,i) {
-            if (input.files && input.files[0]) {
-
-                var reader = new FileReader();
-
-                reader.onload = function (e) {
-                    $('#'+i).attr('src', e.target.result);
-                };
-
-                reader.readAsDataURL(input.files[0]);
-            }
-        }
-
-        $(".Img").change(function(){
-            var i = $(this).attr("id");
-            readURL(this,i);
-        });
-});
-
-
 
 </script>
     <style type="text/css">
@@ -188,6 +156,12 @@ function readURL(input,i) {
             display: none;
         }
 
+        .name {
+          margin-top: 20px;
+          font-size: 20px;
+          float: right;
+        }      
+
         .header {
             width: 1000px;
             margin: auto;
@@ -195,46 +169,16 @@ function readURL(input,i) {
             background-color: #444;
         }
 
-        .name {
-          margin-top: 20px;
-          font-size: 20px;
-          float: right;
+        .content {
+            width: 960px;
+            height: 1040px;
+            margin: auto;
+            padding: 20px;
+            padding-left: 20px;
         }
 
-        a.entry {
-          text-decoration: none;
-          width: 50px;
-          height: 30px;
-          font-size: 20px;
-          color: #111;
-          background-color: #999;
-        }
-
-        .back {
-        	display: none;
-        }
-
-        .bar {
-        	width: 200px;
-        	height: 30px;
-        	border: 1px solid;
-        	position: absolute;
-        }
-
-        .col {
-			height: 30px;
-			background-color: #444;
-			position: relative;
-        }
-
-        .pr {
-        	margin: auto;
-        	height: 10px;
-        	padding: 8px;
-        }
-
-        .img_1 img {
-            width: 150px;
+        .content div{
+            margin-bottom: 10px;
         }
 
 		       
@@ -243,30 +187,29 @@ function readURL(input,i) {
     </style>
 </head>
 <body>
-<div class="name_project">Название проекта:      <input type="text"></div>
-<form action="#" method="post">
-<div class="image_project">Изображение проекта:     <div class="img_1"><img id="1" src='' alt=""></div> 
-<input type="file" name="picture" id="1" class="Img" /></div>
-</form>
-<div class="discription">Описание к проекту:      <input type="text"></div>
-<div class="price">Цена, нужная на реализацию идеи:      <input type="text"></div>
-<div class="days">Количество дней, на сбор средств:      <input type="date"></div>
-<div class="type">Выберите тип проекта: интернет проект или проект в реальной жизне: <select>
-	<option value="online">Интернет проект</option>
-	<option value="offline">Реальный проект</option>
-</select></div>
-<div class="type_pay">Выберите тип взносов: <select>
-	<option value="charity">Благотворительные взносы</option>
-	<option value="part">Долевые взносы в проект</option>
-</select></div>
-<div class="image1">Дополнительное изображение:      <input type="text"></div>
-<div class="discription1">Дополнительное описание:      <input type="text"></div>
-<div class="local_global">Проект общегосударственный: <input type="checkbox"></div>
-<div class="view_map">Укажите на карте место реализации проекта или примерное его место нахождение: <input type="button" value="Показать карту"></div>
-<div id="map"></div> 
-<input type="button" class="creat_project" value="Создать свой проект">
+<div class="header">
+    
+</div>
+<div class="content">
+    <div class="name_project">Название проекта:      <input type="text"></div>
+    
+    <div class="discription">Описание к проекту:      <input type="text"></div>
+    <div class="price">Цена, нужная на реализацию идеи:      <input type="text"></div>
+    <div class="days">Количество дней, на сбор средств:      <input type="date"></div>
+    <div class="type">Выберите тип проекта: интернет проект или проект в реальной жизне: <select>
+    	<option value="online">Интернет проект</option>
+    	<option value="offline">Реальный проект</option>
+    </select></div>
+    <div class="type_pay">Выберите тип взносов: <select>
+    	<option value="charity">Благотворительные взносы</option>
+    	<option value="part">Долевые взносы в проект</option>
+    </select></div>
+    <div class="local_global">Проект общегосударственный: <input type="checkbox"></div>
+    <div class="view_map">Укажите на карте место реализации проекта или примерное его место нахождение: <input type="button" value="Показать карту"></div>
+    <div id="map"></div> 
+    <input type="button" class="creat_project" value="Создать свой проект">
 
-<div class="bar"><div class="col"><div class="pr"></div></div></div>
+</div>
 
 </body>
 </html>
