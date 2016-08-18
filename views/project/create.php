@@ -68,7 +68,7 @@ function init() {
         // Если метка уже создана – просто передвигаем ее.
         if (myPlacemark) {
             myPlacemark.geometry.setCoordinates(coords);
-
+           
         }
         // Если нет – создаем.
         else {
@@ -80,10 +80,12 @@ function init() {
             myPlacemark.events.add('dragend', function () {
             	
                 getAddress(myPlacemark.geometry.getCoordinates());
-            });           
+            });      
+
 
         }
         getAddress(coords);
+
     });
 
     });
@@ -112,7 +114,7 @@ function init() {
                     iconCaption: firstGeoObject.properties.get('name'),
                     balloonContent: firstGeoObject.properties.get('text')
                 });
-                var place = myPlacemark.properties._data.balloonContent;
+                 var place = myPlacemark.properties._data.balloonContent;
                 var coord_1 = coords[0];
                 var coord_2 = coords[1];
         
