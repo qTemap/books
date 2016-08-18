@@ -55,7 +55,7 @@
 
 			//if($user['card'] != '') {
 				if(isset($_POST['name_project'])) {
-					Project::CreateNewProject($_POST['coord_1'], $_POST['coord_2'], $_POST['place'], $_POST['type'], $_POST['type_pay'], $_POST['global'], $_POST['name_project'], $_POST['discription'], $_POST['price'], $_POST['days'], $_COOKIE['name'], $_COOKIE['sename']);
+					Project::CreateNewProject($_POST['coord_1'], $_POST['coord_2'], $_POST['place'], $_POST['type'], $_POST['type_pay'], $_POST['global'], $_POST['name_project'], $_POST['discription'], $_POST['price'], $_POST['days']);
 				}
 
 				require_once(ROOT.'/views/project/create.php');
@@ -80,8 +80,13 @@
 
 		public function actionView_groupe($local, $type, $type_pay) 
 		{
-			$projectList = array();
-			$projectList = Project::ViewProjectGroupe($type, $type_pay);
+			if(!isset($_GET['city'])) {
+				$projectList = array();
+				$projectList = Project::ViewProjectGroupe($type, $type_pay);
+			} else {
+				$projectList = array();
+				$projectList = Project::ViewProjectInCity($type, $type_pay, $_GET['city']);
+			}			
 
 			require_once(ROOT.'/views/project/project_groupe.php');
 

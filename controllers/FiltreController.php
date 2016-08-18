@@ -11,6 +11,11 @@
 				$newsList = Filtre::GetPointForMaps();
 				return $newsList;			
 			}
+
+			if(isset($_POST['proj'])) {
+				$projList = Filtre::GetNameProject($_POST['proj']);
+				return $projList;			
+			}
 			
 			require_once(ROOT.'/views/filtre/first.php');
 
@@ -18,7 +23,11 @@
 
 		public function actionType($local)
 		{
+
+			
 			require_once(ROOT.'/views/filtre/second.php');
+
+
 
 			return $local;
 

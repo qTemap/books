@@ -77,9 +77,9 @@
 <body>
 <div class="header"></div>
 <div class="content">
-	<a href="../../project/<?php echo $local.'/'.$type; ?>/charity"><input type="button" value="Благочинні взноси в проекти" name="" class=""></a>
-	<a href="../../project/<?php echo $local.'/'.$type; ?>/part"><input type="button" value="Дольова участь в проектах" name="" class=""></a>
-	<a href="../../all_project"><input type="button" value="Усі проекти" name="all" class="all"></a>
+	<a href="../../../project/<?php echo $local.'/'.$type; ?>/charity/?city=<?php echo $_GET['city'] ?>"><input type="button" value="Благочинні взноси в проекти" name="" class=""></a>
+	<a href="../../../project/<?php echo $local.'/'.$type; ?>/part/?city=<?php echo $_GET['city'] ?>"><input type="button" value="Дольова участь в проектах" name="" class=""></a>
+	<a href="../../../all_project"><input type="button" value="Усі проекти" name="all" class="all"></a>
 </div>
 </body>
 </html>

@@ -52,7 +52,7 @@ function init() {
 					data: {type: type, type_pay: type_pay, name_project: name_project, discription: discription, price: price, days: days, global: h},
 					success: function(data) {
 						alert(data);
-						//window.location.href = "/project";
+						window.location.href = "/project";
 					}
 				});		
 		 });
@@ -132,7 +132,7 @@ function init() {
 						data: {place: place, coord_1: coord_1, coord_2: coord_2, global: global, type: type, type_pay: type_pay, name_project: name_project, discription: discription, price: price, days: days},
 						success: function(data) {
 
-							//window.location.href = "/project";
+							window.location.href = "/project";
 						}
 					});
 

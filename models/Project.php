@@ -85,6 +85,29 @@
 			}
 		}
 
+		static public function ViewProjectInCity($type, $type_pay, $city)
+		{
+			$result = DB :: $dbh->query('SELECT * FROM maps, project WHERE project.type = ? AND project.type_pay = ? AND maps.address = ? AND maps.id_project = project.id', array($type, $type_pay, $city));
+		
+			$i = 0;
+			while ($row = $result->fetch()) {
+				$projectList[$i]['id'] = $row['id'];
+				$projectList[$i]['name_project'] = $row['name_project'];
+				$projectList[$i]['user'] = $row['user'];
+				$projectList[$i]['price'] = $row['price'];
+				$projectList[$i]['collected'] = $row['collected'];
+				$projectList[$i]['days'] = $row['days'];
+				$projectList[$i]['img'] = $row['img'];
+				$projectList[$i]['discription'] = $row['discription'];
+				$projectList[$i]['type'] = $row['type'];
+				$projectList[$i]['type_pay'] = $row['type_pay'];
+				$i++;
+			}
+			if (!empty($projectList)) {
+				return $projectList;
+			}
+		}
+
 		static public function GetListProject()
 		{			
 			$result = DB :: $dbh->query('SELECT * FROM project');

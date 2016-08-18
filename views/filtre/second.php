@@ -77,9 +77,10 @@
 <body>
 	<div class="header"></div>
 	<div class="content">
-	<a href="<?php echo $local; ?>/offline"><input type="button" value="Офф-лайн проекти" class="offline" name="offline"></a>
-	<a href="<?php echo $local; ?>/online"><input type="button" value="Он-лайн проекти" class="online" name="online"></a>
+	<a href="../../filtre/<?php echo $local; ?>/offline/?city=<?php echo $_GET['city'] ?>"><input type="button" value="Офф-лайн проекти" class="offline" name="offline"></a>
+	<a href="../../filtre/<?php echo $local; ?>/online/?city=<?php echo $_GET['city'] ?>"><input type="button" value="Он-лайн проекти" class="online" name="online"></a>
 	<a href="../all_project"><input type="button" value="Усі проекти" name="all" class="all"></a>
+
 	</div>
 </body>
 </html>

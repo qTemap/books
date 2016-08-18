@@ -18,23 +18,89 @@
                 searchControlProvider: 'yandex#search'
             });  
 
-             $.ajax({
+              $.ajax({
                 type: "POST",
                 url: "#",
                 data: {map: 'map'},
                 success: function(data) {
                     var obj = jQuery.parseJSON(data);
-                    console.log(obj);
+                    
                     $.each(obj, function( index, value ) {
-                        myMap.geoObjects
-                            .add(new ymaps.Placemark([value[0], value[1]], {
-                            balloonContent: '<a href=project/'+value[3]+'>'+value[2]+'</a><br>'+value[4]
-                        })); 
+                        var myGeocoder = ymaps.geocode(value[0],{kind:'locality'});
+                        myGeocoder.then(
+                            function (res) {
+                                var coord = res.geoObjects.get(0).geometry.getCoordinates();
+                                //alert(value[0]);
+                                $.ajax({
+                                    type: "POST",
+                                    url: "#",
+                                    data: {proj: value[0]},
+                                    success: function(proj) {
+                                        var obj1 = jQuery.parseJSON(proj);
+                                        //console.log(obj1);
+                                      //alert(obj1.value);
+                                        var t = [];
+                                         $.each(obj1, function( index, val ) {
+                                             t[index]= val[0];                                            
+                                         });
+                                         //var r = ["1" ,"2"];
+                                         var r = t.join('<br>');
+                                         myMap.geoObjects
+                                            .add(new ymaps.Placemark(coord, {
+                                                balloonContent: '<a href="../filtre/city/?city='+value[0]+'">'+value[0]+'</a><br><br>'+r
+                                            }));
+                                         //alert(t.join(','));
+                                           // console.log(t);
+                                           // //alert(count);
+                                           // for(var i = 1; i <= count; i++) {
+                                           //  alert(t[i])
+                                           // }
+                                         
+                                    }
+                                });
+                               
+                                },
+                            function (err) {
+                                // обработка ошибки
+                            }
+                        );
+                        
+                        // myMap.geoObjects
+                        //     .add(new ymaps.Placemark([value[0], value[1]], {
+                        //     balloonContent: '<a href=project/'+value[3]+'>'+value[2]+'</a><br>'+value[4]
+                            
+// myGeocoder.then(
+//     function (res) {
+//         myMap.geoObjects.add(res.geoObjects,{balloonContent: value[4]});
+//     },
+//     function (err) {
+//         // обработка ошибки
+//     }
+// );
+                      
                     });
                 }
             });      
+
+           
+
+           
         }
     </script>
+<!--                             var myGeocoder = ymaps.geocode("город Харьков",{kind:'locality'});
+myGeocoder.then(
+    function (res) {
+        myMap.geoObjects.add(res.geoObjects);
+        myMap.geoObjects
+                            .add(new ymaps.Placemark([value[0], value[1]], {
+                            balloonContent: '<a href=project/'+value[3]+'>'+value[2]+'</a><br>'+value[4]
+                             var myGeocoder = ymaps.geocode(value[2],{kind:'locality'});
+        alert(res.geoObjects.get(0).geometry.getCoordinates());
+    },
+    function (err) {
+        // обработка ошибки
+    }
+); -->
 
     <style type="text/css">
         html, body {
@@ -129,8 +195,8 @@
 			$('#map').css({'display':'block'});
 			$('.global').css({'display':'none'});
 			$('.city').css({'display':'none'});
-			$('.back').css({'display':'inline-block','width':'480px','margin-left':'0px','margin-top':'0px'});
-            $('.all').css({'display':'inline-block','width':'500px','margin-left':'0px','margin-top':'0px'});
+			$('.back').css({'display':'inline-block','width':'499px','margin-left':'0px','margin-top':'0px'});
+            $('.all').css({'display':'inline-block','width':'499px','margin-left':'0px','margin-top':'0px'});
 		});
 
 		$('.back').click(function() {
